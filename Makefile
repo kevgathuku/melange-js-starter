@@ -12,7 +12,7 @@ help: ## Print this help message
 .PHONY: install
 install: ## Install development dependencies
 	opam update
-	opam install -y . --deps-only
+	opam install . --with-test --deps-only
 
 .PHONY: test
 test: ## Run built tests using node
@@ -26,6 +26,11 @@ build: ## Build the project
 .PHONY: build_verbose
 build_verbose: ## Build the project
 	$(DUNE) build --verbose
+
+.PHONY: run
+run: ## Run the built JS script with node
+	$(DUNE) build
+	node _build/default/app/app.js
 
 .PHONY: clean
 clean: ## Clean build artifacts and other generated files
