@@ -16,8 +16,7 @@ install: ## Install development dependencies
 
 .PHONY: test
 test: ## Run built tests using node
-	$(DUNE) build
-	node runtests.js
+	$(DUNE) build @runtest --no-buffer
 
 .PHONY: build
 build: ## Build the project
